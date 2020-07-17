@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using MovieMVC.Model;
 
 namespace MovieMVC.Data_Access.Data
 {
@@ -12,5 +10,6 @@ namespace MovieMVC.Data_Access.Data
             : base(options)
         {
         }
+        public DbSet<Category> Categories { get; set; }
     }
 }
