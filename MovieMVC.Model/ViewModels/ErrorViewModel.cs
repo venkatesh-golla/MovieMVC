@@ -1,6 +1,6 @@
 using System;
 
-namespace MovieMVC.Models
+namespace MovieMVC.Model.ViewModels
 {
     public class ErrorViewModel
     {
