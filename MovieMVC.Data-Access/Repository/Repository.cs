@@ -29,13 +29,15 @@ namespace MovieMVC.Data_Access.Repository
             return dbset.Find(id);
         }
 
-        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderby = null, string includeProperties = null)
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null)
         {
             IQueryable<T> query = dbset;
+
             if (filter != null)
             {
                 query = query.Where(filter);
             }
+
             if (includeProperties != null)
             {
                 foreach (var includeProp in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
@@ -43,9 +45,10 @@ namespace MovieMVC.Data_Access.Repository
                     query = query.Include(includeProp);
                 }
             }
-            if (orderby != null)
+
+            if (orderBy != null)
             {
-                return orderby(query).ToList();
+                return orderBy(query).ToList();
             }
             return query.ToList();
         }

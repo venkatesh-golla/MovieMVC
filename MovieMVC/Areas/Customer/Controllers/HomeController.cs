@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MovieMVC.Data_Access.Repository.IRepository;
+using MovieMVC.Model;
 using MovieMVC.Model.ViewModels;
 
 namespace MovieMVC.Areas.Customer.Controllers
@@ -13,15 +15,17 @@ namespace MovieMVC.Areas.Customer.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IUnitOfWork _unitOfWork;
+        public HomeController(ILogger<HomeController> logger,IUnitOfWork unitOfWork)
         {
             _logger = logger;
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Movie> movieList = _unitOfWork.Movie.GetAll(includeProperties:"Category,DeliveryType");
+            return View(movieList);
         }
 
         public IActionResult Privacy()

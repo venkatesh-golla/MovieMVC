@@ -82,6 +82,10 @@ namespace MovieMVC.Data_Access.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
@@ -133,6 +137,8 @@ namespace MovieMVC.Data_Access.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -236,6 +242,137 @@ namespace MovieMVC.Data_Access.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("MovieMVC.Model.Company", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsAuthorizedCompany")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostalCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StreetAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Companies");
+                });
+
+            modelBuilder.Entity("MovieMVC.Model.DeliveryType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DeliveryTypes");
+                });
+
+            modelBuilder.Entity("MovieMVC.Model.Movie", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DeliveryTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Director")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ISBN")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("ListPrice")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Price100")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Price50")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("DeliveryTypeId");
+
+                    b.ToTable("Movies");
+                });
+
+            modelBuilder.Entity("MovieMVC.Model.ApplicationUser", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CompanyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostalCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StreetAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasIndex("CompanyId");
+
+                    b.HasDiscriminator().HasValue("ApplicationUser");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -285,6 +422,28 @@ namespace MovieMVC.Data_Access.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("MovieMVC.Model.Movie", b =>
+                {
+                    b.HasOne("MovieMVC.Model.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MovieMVC.Model.DeliveryType", "DeliveryType")
+                        .WithMany()
+                        .HasForeignKey("DeliveryTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MovieMVC.Model.ApplicationUser", b =>
+                {
+                    b.HasOne("MovieMVC.Model.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId");
                 });
 #pragma warning restore 612, 618
         }
