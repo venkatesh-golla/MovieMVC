@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MovieMVC.Data_Access.Repository.IRepository;
 using MovieMVC.Model;
@@ -11,6 +12,7 @@ using MovieMVC.Utilities;
 namespace MovieMVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class DeliveryTypeController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

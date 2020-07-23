@@ -8,6 +8,9 @@ using Microsoft.Extensions.Hosting;
 using MovieMVC.Data_Access.Data;
 using MovieMVC.Data_Access.Repository;
 using MovieMVC.Data_Access.Repository.IRepository;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using MovieMVC.Utilities;
+using Microsoft.Extensions.Options;
 
 namespace MovieMVC
 {
@@ -26,11 +29,29 @@ namespace MovieMVC
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentity<IdentityUser,IdentityRole>().AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddSingleton<IEmailSender, EmailSender>();
+            services.Configure<EmailOptions>(Configuration);
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = $"/Identity/Account/Login";
+                options.LogoutPath = $"/Identity/Account/Logout";
+                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+            });
+            services.AddAuthentication().AddFacebook(Options =>
+            {
+                Options.AppId = "333683497633384";
+                Options.AppSecret = "c00935c7339aafd997d4e48baf68cb42";
+            });
+            services.AddAuthentication().AddGoogle(Options =>
+            {
+                Options.ClientId = "751195025717-5adnb8in7lnt2j7u8s3m4kfhvmcrk3or.apps.googleusercontent.com";
+                Options.ClientSecret = "JuKo-M7cTXXbf_rcW9pExeqP";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
