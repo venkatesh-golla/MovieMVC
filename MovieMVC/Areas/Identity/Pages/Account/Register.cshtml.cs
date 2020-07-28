@@ -195,6 +195,19 @@ namespace MovieMVC.Areas.Identity.Pages.Account
                 }
             }
 
+            Input = new InputModel()
+            {
+                CompanyList = _unitOfWork.Company.GetAll().Select(c => new SelectListItem
+                {
+                    Text = c.Name,
+                    Value = c.Id.ToString()
+                }),
+                RoleList = _roleManager.Roles.Where(u => u.Name != SD.Role_User_Indi).Select(x => x.Name).Select(c => new SelectListItem
+                {
+                    Text = c,
+                    Value = c
+                })
+            };
             // If we got this far, something failed, redisplay form
             return Page();
         }

@@ -11,6 +11,8 @@ using MovieMVC.Data_Access.Repository.IRepository;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using MovieMVC.Utilities;
 using Microsoft.Extensions.Options;
+using System;
+using Stripe;
 
 namespace MovieMVC
 {
@@ -33,6 +35,7 @@ namespace MovieMVC
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddSingleton<IEmailSender, EmailSender>();
             services.Configure<EmailOptions>(Configuration);
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages().AddRazorRuntimeCompilation();
@@ -51,6 +54,12 @@ namespace MovieMVC
             {
                 Options.ClientId = "751195025717-5adnb8in7lnt2j7u8s3m4kfhvmcrk3or.apps.googleusercontent.com";
                 Options.ClientSecret = "JuKo-M7cTXXbf_rcW9pExeqP";
+            });
+            services.AddSession(Options =>
+            {
+                Options.IdleTimeout = TimeSpan.FromMinutes(30);
+                Options.Cookie.HttpOnly = true;
+                Options.Cookie.IsEssential = true;
             });
         }
 
@@ -72,7 +81,8 @@ namespace MovieMVC
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["Secretkey"];
+            app.UseSession();
             app.UseAuthentication();
             app.UseAuthorization();
 
