@@ -14,6 +14,7 @@ using Microsoft.Extensions.Options;
 using System;
 using Stripe;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using MovieMVC.Data_Access.Initializer;
 
 namespace MovieMVC
 {
@@ -40,6 +41,7 @@ namespace MovieMVC
             services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
             services.Configure<TwilioSettings>(Configuration.GetSection("Twilio"));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IDBInitializer, DBInitializer>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.ConfigureApplicationCookie(options =>
@@ -67,7 +69,7 @@ namespace MovieMVC
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,IDBInitializer dBInitializer)
         {
             if (env.IsDevelopment())
             {
@@ -88,7 +90,7 @@ namespace MovieMVC
             app.UseSession();
             app.UseAuthentication();
             app.UseAuthorization();
-
+            dBInitializer.Initialize();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
