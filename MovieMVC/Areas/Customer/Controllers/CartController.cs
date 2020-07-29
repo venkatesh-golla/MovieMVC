@@ -15,6 +15,10 @@ using System.Text;
 using System.Text.Encodings.Web;
 using MovieMVC.Model;
 using Stripe;
+using Microsoft.Extensions.Options;
+using Twilio;
+using Twilio.TwiML;
+using Twilio.Rest.Api.V2010.Account;
 
 namespace MovieMVC.Areas.Customer.Controllers
 {
@@ -24,15 +28,17 @@ namespace MovieMVC.Areas.Customer.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly IEmailSender _emailSender;
         private readonly UserManager<IdentityUser> _userManager;
+        private TwilioSettings _twilioOptions { get; set; }
 
         [BindProperty]
         public ShoppingCartVM ShoppingCartVM { get; set; }
 
-        public CartController(IUnitOfWork unitOfWork, IEmailSender emailSender, UserManager<IdentityUser> userManager)
+        public CartController(IUnitOfWork unitOfWork, IEmailSender emailSender, UserManager<IdentityUser> userManager,IOptions<TwilioSettings> twilioOptions)
         {
             _unitOfWork = unitOfWork;
             _emailSender = emailSender;
             _userManager = userManager;
+            _twilioOptions = twilioOptions.Value;
         }
 
         public IActionResult Index()
@@ -234,6 +240,19 @@ namespace MovieMVC.Areas.Customer.Controllers
 
         public IActionResult OrderConfirmation(int id)
         {
+            OrderHeader orderHeader = _unitOfWork.OrderHeader.GetFirstOrDefault(u => u.Id == id);
+            TwilioClient.Init(_twilioOptions.AccountSId, _twilioOptions.AuthToken);
+            try
+            {
+                var message= MessageResource.Create(
+                    body:"Order placed in MovieMVC website with Order Id: "+id,
+                    from:new Twilio.Types.PhoneNumber(_twilioOptions.PhoneNumber),
+                    to:new Twilio.Types.PhoneNumber(orderHeader.PhoneNumber)
+                );
+            }catch(Exception e)
+            {
+
+            }
             return View(id);
         }
     }
