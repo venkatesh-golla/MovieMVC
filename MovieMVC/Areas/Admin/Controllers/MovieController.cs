@@ -31,12 +31,13 @@ namespace MovieMVC.Areas.Admin.Controllers
         {
             return View();
         }
-        public IActionResult Upsert(int? id)
+        public async Task<IActionResult> Upsert(int? id)
         {
+            IEnumerable<Category> listOfCategories = await _unitOfWork.Category.GetAllAsync();
             MovieVM movieVM = new MovieVM()
             {
                 Movie = new Movie(),
-                CategoryList=_unitOfWork.Category.GetAll().Select(i=>new SelectListItem
+                CategoryList= listOfCategories.Select(i=>new SelectListItem
                 {
                     Text=i.Name,
                     Value=i.Id.ToString()
@@ -63,8 +64,9 @@ namespace MovieMVC.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(MovieVM movieVM)
+        public async Task<IActionResult> Upsert(MovieVM movieVM)
         {
+
             if (ModelState.IsValid)
             {
 
@@ -112,7 +114,8 @@ namespace MovieMVC.Areas.Admin.Controllers
             }
             else
             {
-                movieVM.CategoryList = _unitOfWork.Category.GetAll().Select(i => new SelectListItem
+                IEnumerable<Category> listOfCategories = await _unitOfWork.Category.GetAllAsync();
+                movieVM.CategoryList = listOfCategories.Select(i => new SelectListItem
                 {
                     Text = i.Name,
                     Value = i.Id.ToString()
