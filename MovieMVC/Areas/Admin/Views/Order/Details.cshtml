@@ -233,7 +233,7 @@
                                 <br>
                                 if (Model.OrderHeader.OrderStatus == SD.StatusApproved)
                                 {
-                                    <a asp-action="StartProcessing" class="btn btn-primary form-control">Start Processing</a>
+                                    <a asp-action="StartProcessing" asp-route-id="@Model.OrderHeader.Id" class="btn btn-primary form-control">Start Processing</a>
                                 }
                                 if (Model.OrderHeader.OrderStatus == SD.StatusInProcess)
                                 {

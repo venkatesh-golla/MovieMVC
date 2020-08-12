@@ -1,0 +1,14 @@
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Data-Access\bin\Debug\netcoreapp3.1\MovieMVC.Data_Access.deps.json
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Data-Access\bin\Debug\netcoreapp3.1\MovieMVC.Data_Access.dll
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Data-Access\bin\Debug\netcoreapp3.1\MovieMVC.Data_Access.pdb
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Data-Access\obj\Debug\netcoreapp3.1\MovieMVC.Data_Access.csprojAssemblyReference.cache
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Data-Access\obj\Debug\netcoreapp3.1\MovieMVC.Data_Access.AssemblyInfoInputs.cache
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Data-Access\obj\Debug\netcoreapp3.1\MovieMVC.Data_Access.AssemblyInfo.cs
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Data-Access\obj\Debug\netcoreapp3.1\MovieMVC.Data_Access.dll
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Data-Access\obj\Debug\netcoreapp3.1\MovieMVC.Data_Access.pdb
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Data-Access\bin\Debug\netcoreapp3.1\MovieMVC.Model.dll
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Data-Access\bin\Debug\netcoreapp3.1\MovieMVC.Utilities.dll
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Data-Access\bin\Debug\netcoreapp3.1\MovieMVC.Model.pdb
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Data-Access\bin\Debug\netcoreapp3.1\MovieMVC.Utilities.pdb
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Data-Access\obj\Debug\netcoreapp3.1\MovieMVC.Data_Access.csproj.CopyComplete
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Data-Access\obj\Debug\netcoreapp3.1\MovieMVC.Data_Access.csproj.CoreCompileInputs.cache

@@ -1,0 +1,5 @@
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Data-Access\bin\Debug\netcoreapp3.1\MovieMVC.Data-Access.deps.json
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Data-Access\bin\Debug\netcoreapp3.1\MovieMVC.Data-Access.dll
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Data-Access\obj\Debug\netcoreapp3.1\MovieMVC.Data-Access.AssemblyInfoInputs.cache
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Data-Access\obj\Debug\netcoreapp3.1\MovieMVC.Data-Access.AssemblyInfo.cs
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Data-Access\obj\Debug\netcoreapp3.1\MovieMVC.Data-Access.csprojAssemblyReference.cache

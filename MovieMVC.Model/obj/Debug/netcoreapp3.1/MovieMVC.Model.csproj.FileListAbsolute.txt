@@ -1,0 +1,9 @@
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Model\bin\Debug\netcoreapp3.1\MovieMVC.Model.deps.json
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Model\bin\Debug\netcoreapp3.1\MovieMVC.Model.dll
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Model\bin\Debug\netcoreapp3.1\MovieMVC.Model.pdb
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Model\obj\Debug\netcoreapp3.1\MovieMVC.Model.csprojAssemblyReference.cache
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Model\obj\Debug\netcoreapp3.1\MovieMVC.Model.AssemblyInfoInputs.cache
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Model\obj\Debug\netcoreapp3.1\MovieMVC.Model.AssemblyInfo.cs
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Model\obj\Debug\netcoreapp3.1\MovieMVC.Model.dll
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Model\obj\Debug\netcoreapp3.1\MovieMVC.Model.pdb
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Model\obj\Debug\netcoreapp3.1\MovieMVC.Model.csproj.CoreCompileInputs.cache
