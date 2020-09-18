@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MovieMVC.Data_Access.Data;
 using MovieMVC.Data_Access.Repository.IRepository;
 using MovieMVC.Model;
 using MovieMVC.Model.ViewModels;
@@ -20,10 +21,12 @@ namespace MovieMVC.Areas.Customer.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IUnitOfWork _unitOfWork;
-        public HomeController(ILogger<HomeController> logger,IUnitOfWork unitOfWork)
+        private readonly ApplicationDbContext _db;
+        public HomeController(ILogger<HomeController> logger,IUnitOfWork unitOfWork, ApplicationDbContext db)
         {
             _logger = logger;
             _unitOfWork = unitOfWork;
+            _db = db;
         }
 
         public IActionResult Index()
@@ -40,6 +43,51 @@ namespace MovieMVC.Areas.Customer.Controllers
             }
 
             return View(movieList);
+        }
+
+        public IActionResult MoviesByDirector(string directorName)
+        {
+            IEnumerable<Movie> movieList = _unitOfWork.Movie.GetAll(c=>c.Director==directorName , includeProperties: "Category,DeliveryType");
+
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            if (claim != null)
+            {
+                var count = _unitOfWork.ShoppingCart.GetAll(c => c.ApplicationUserId == claim.Value)
+                    .ToList().Count;
+                HttpContext.Session.SetInt32(SD.ssShopingCart, count);
+            }
+
+            return View(movieList);
+        }
+
+        public IActionResult moviesByCategory(int? categoryId)
+        {
+            IEnumerable<Movie> movieList = _unitOfWork.Movie.GetAll(c => c.CategoryId == categoryId, includeProperties: "Category,DeliveryType");
+
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            if (claim != null)
+            {
+                var count = _unitOfWork.ShoppingCart.GetAll(c => c.ApplicationUserId == claim.Value)
+                    .ToList().Count;
+                HttpContext.Session.SetInt32(SD.ssShopingCart, count);
+            }
+
+            return View(movieList);
+        }
+
+        public IActionResult DirectorsList()
+        {
+            var listOfDirectors = _db.Movies.Select(d => d.Director).Distinct();
+            return View(listOfDirectors);
+        }
+
+        public IActionResult CategoryList()
+        {
+            IEnumerable<Category> listOfCategories;
+             listOfCategories = _db.Categories.Distinct();
+            return View(listOfCategories);
         }
 
         public IActionResult Privacy()

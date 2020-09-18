@@ -27,7 +27,7 @@
                             {
                                 <div class="row">
                                     <div class="d-none d-lg-block col-lg-1 text-center py-2">
-                                        <img src="@item.Movie.ImageUrl" class="rounded" width="100%" />
+                                        <a asp-action="moviesByDirector" asp-controller="Home" asp-route-directorName="@item.Movie.Director"><img src="@item.Movie.ImageUrl" class="rounded" width="100%" /></a>
                                     </div>
                                     <div class="col-12 text-sm-center col-lg-6 text-lg-left">
                                         <h5><strong>@item.Movie.Title</strong></h5>

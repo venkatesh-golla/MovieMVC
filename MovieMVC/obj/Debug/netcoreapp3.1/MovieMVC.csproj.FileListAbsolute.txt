@@ -508,3 +508,10 @@ C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\MovieMVC.M
 C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\MovieMVC.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\UserName\Default.cshtml.g.cs
 C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_notifications.cshtml.g.cs
+C:\Users\golla\source\repos\MovieMVC\MovieMVC\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\golla\source\repos\MovieMVC\MovieMVC\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\golla\source\repos\MovieMVC\MovieMVC\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
+C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Home\MoviesByDirector.cshtml.g.cs
+C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Home\moviesByCategory.cshtml.g.cs
+C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Home\DirectorsList.cshtml.g.cs
+C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Home\CategoryList.cshtml.g.cs

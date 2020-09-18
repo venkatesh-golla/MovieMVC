@@ -1,0 +1,18 @@
+﻿@model IEnumerable<MovieMVC.Model.Category>
+@{
+    ViewData["Title"] = "List of Categories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>List Of Directors</h1>
+<hr />
+<div class="row">
+    @foreach (var category in Model)
+    {
+        <div class="d-flex justify-content-center align-items-center col-2 p-1 mr-3 mb-3 bg-primary" style="border:1px solid black; border-radius: 5px;">
+            <a asp-action="moviesByCategory" asp-route-categoryId="@category.Id"> <span class="align-middle text-white">@category.Name</span></a>
+        </div>
+
+    }
+</div>
+
