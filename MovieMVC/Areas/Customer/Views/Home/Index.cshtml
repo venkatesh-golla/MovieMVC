@@ -4,9 +4,29 @@
 @{
     ViewData["Title"] = "Movies List";
 }
+    <div class="row">
+        <div class="col-2">
+            <a class="btn btn-outline-success" asp-action="DirectorsList">Directors</a>
+        </div>
+        <div class="col-2">
+            <a class="btn btn-outline-success" asp-action="CategoryList">Categories</a>
+        </div>
+        <div class="col-2">
 
-<a class="btn btn-info" asp-action="DirectorsList">Directors</a>
-<a class="btn btn-info" asp-action="CategoryList">Categories</a>
+        </div>
+        <div class="col-2">
+
+        </div>
+        <div class="col-2">
+
+        </div>
+        <div class="col-2">
+            <a class="btn btn-danger" asp-controller="BookAppointment" asp-action="Index">Book Appointment</a>
+        </div>
+    </div>
+
+
+
 <hr />
 <div class="row pb-3">
 

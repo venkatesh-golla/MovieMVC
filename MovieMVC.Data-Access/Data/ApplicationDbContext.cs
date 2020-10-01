@@ -11,6 +11,7 @@ namespace MovieMVC.Data_Access.Data
         {
         }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Appointment> Appointments{ get; set; }
         public DbSet<DeliveryType> DeliveryTypes { get; set; }
 
         public DbSet<Movie> Movies { get; set; }
