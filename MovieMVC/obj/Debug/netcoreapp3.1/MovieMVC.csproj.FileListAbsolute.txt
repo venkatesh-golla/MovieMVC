@@ -516,3 +516,8 @@ C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\Razor\Area
 C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Home\DirectorsList.cshtml.g.cs
 C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Home\CategoryList.cshtml.g.cs
 C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\BookAppointment\Index.cshtml.g.cs
+C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Appointment\Index.cshtml.g.cs
+C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_TableButtonsPartial.cshtml.g.cs
+C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Appointment\Edit.cshtml.g.cs
+C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Appointment\Details.cshtml.g.cs
+C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Appointment\Delete.cshtml.g.cs

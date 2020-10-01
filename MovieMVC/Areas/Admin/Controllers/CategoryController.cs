@@ -33,8 +33,8 @@ namespace MovieMVC.Areas.Admin.Controllers
             {
                 CurrentPage = productPage,
                 ItemsPerPage = 2,
-                TotalItem = count,
-                urlParam = "/Admin/Category/Index?productPage=:"
+                TotalItems = count,
+                urlParameter = "/Admin/Category/Index?productPage=:"
             };
             return View(categoryVM);
         }

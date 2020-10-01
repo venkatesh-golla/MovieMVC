@@ -31,7 +31,7 @@ namespace MovieMVC.TagHelpers
             for (int i = 1; i <= PageModel.TotalPage; i++)
             {
                 TagBuilder tag = new TagBuilder("a");
-                string url = PageModel.urlParam.Replace(":", i.ToString());
+                string url = PageModel.urlParameter.Replace(":", i.ToString());
                 tag.Attributes["href"] = url;
                 if (PageClassesEnabled)
                 {
