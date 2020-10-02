@@ -13,6 +13,8 @@ namespace MovieMVC.Model
         public int Id { get; set; }
         [Display(Name = "Employee")]
         public string EmployeeId { get; set; }
+        [ForeignKey("EmployeeId")]
+        public virtual ApplicationUser Employee { get; set; }
         [Required]
         public DateTime AppointmentDate { get; set; }
         

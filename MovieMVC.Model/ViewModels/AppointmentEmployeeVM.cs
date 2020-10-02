@@ -4,12 +4,9 @@ using System.Text;
 
 namespace MovieMVC.Model.ViewModels
 {
-    public class AppointmentVM
+    public class AppointmentEmployeeVM
     {
         public List<Appointment> Appointments { get; set; }
-
-        public PagingInfo PagingInfo { get; set; }
-
         public List<Employee> Employees { get; set; }
     }
 }

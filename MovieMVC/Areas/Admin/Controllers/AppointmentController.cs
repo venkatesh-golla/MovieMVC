@@ -5,8 +5,10 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MovieMVC.Data_Access.Data;
 using MovieMVC.Model;
 using MovieMVC.Model.ViewModels;
@@ -14,21 +16,27 @@ using MovieMVC.Utilities;
 
 namespace MovieMVC.Areas.Admin.Controllers
 {
-    [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee+","+SD.Role_User_Comp)]
+    [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee+",")]
     [Area("Admin")]
     public class AppointmentController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly RoleManager<IdentityRole> roleManager;
+        private readonly UserManager<IdentityUser> userManager;
         private int PageSize = 2;
         public AppointmentVM AppointmentVM;
 
-        public AppointmentController(ApplicationDbContext context)
+        public AppointmentController(ApplicationDbContext context, RoleManager<IdentityRole> roleMaager,
+                                        UserManager<IdentityUser> userManager)
         {
             _context = context;
             AppointmentVM = new AppointmentVM()
             {
-                Appointments = new List<Appointment>()
+                Appointments = new List<Appointment>(),
+                Employees=new List<Employee>()
             };
+            this.roleManager = roleMaager;
+            this.userManager = userManager;
         }
         public async Task<IActionResult> Index(string searchName = null, string searchEmail = null, string searchPhone = null, string searchDate = null, int productPage = 1)
         {
@@ -57,11 +65,11 @@ namespace MovieMVC.Areas.Admin.Controllers
                 param.Append(searchDate);
             }
             AppointmentVM.Appointments = _context.Appointments.ToList();
-            //AppointmentVM.Appointments = _context.Appointments.Include(s => s.SalesPerson).ToList();
-/*            if (User.IsInRole(SD.AdminEndUser))
+            AppointmentVM.Appointments = _context.Appointments.Include(s => s.Employee).ToList();
+            if (User.IsInRole(SD.Role_Employee))
             {
-                AppointmentVM.Appointments = AppointmentVM.Appointments.Where(s => s.SalesPersonId == claim.Value).ToList();
-            }*/
+                AppointmentVM.Appointments = AppointmentVM.Appointments.Where(s => s.EmployeeId == claim.Value).Where(s=>s.isConfirmed==true).ToList();
+            }
 
             if (searchName != null)
             {
@@ -100,10 +108,28 @@ namespace MovieMVC.Areas.Admin.Controllers
                 TotalItems = count,
                 urlParameter = param.ToString()
             };
+            if (AppointmentVM.Appointments.Count>0 && AppointmentVM.Appointments.FirstOrDefault().EmployeeId.Length>0)
+            {
+                foreach (var employee in AppointmentVM.Appointments)
+                {
+                    if(userManager.Users.Where(u => u.Id == employee.EmployeeId).FirstOrDefault() != null)
+                    {
+                        Employee emp = new Employee
+                        {
+                            Id = employee.EmployeeId,
+                            Name = userManager.Users.Where(u => u.Id == employee.EmployeeId).FirstOrDefault().UserName
+                        };
+                        AppointmentVM.Employees.Add(emp);
+                    }
+ 
+ 
+                }
+            }
 
             return View(AppointmentVM);
         }
 
+        [Authorize(Roles = SD.Role_Admin)]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -112,10 +138,27 @@ namespace MovieMVC.Areas.Admin.Controllers
             }
 
             var Appointments = _context.Appointments.Where(a => a.Id == id).FirstOrDefault();
+            var roleEmployee = roleManager.Roles.Where(u => u.Name == SD.Role_Employee).FirstOrDefault();
+            var users = userManager.Users;
 
+            var usersInEmployee = new List<Employee> { };
+            foreach(var user in users)
+            {
+                var employee = new Employee
+                {
+                    Id = user.Id,
+                    Name=user.UserName
+                };
+                if(await userManager.IsInRoleAsync(user, roleEmployee.Name))
+                {
+                    usersInEmployee.Add(employee);
+                }
+            }
+            ViewData["EmployeeList"] = new SelectList(usersInEmployee,"Id","Name") ;
             return View(Appointments);
         }
 
+        [Authorize(Roles = SD.Role_Admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Appointment objAppointmentVM)
@@ -134,15 +177,16 @@ namespace MovieMVC.Areas.Admin.Controllers
                 appointmentFromDb.AppointmentDate = objAppointmentVM.AppointmentDate;
                 appointmentFromDb.isConfirmed = objAppointmentVM.isConfirmed;
 
-/*                if (User.IsInRole(SD.Role_Admin))
+                if (User.IsInRole(SD.Role_Admin))
                 {
-                    appointmentFromDb.EmployeeId = objAppointmentVM.Appointments.SalesPersonId;
-                }*/
+                    appointmentFromDb.EmployeeId = objAppointmentVM.EmployeeId;
+                }
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             return View(objAppointmentVM);
         }
+        
 
         public async Task<IActionResult> Details(int? id)
         {
@@ -156,6 +200,7 @@ namespace MovieMVC.Areas.Admin.Controllers
             return View(Appointments);
         }
 
+        [Authorize(Roles = SD.Role_Admin)]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -168,6 +213,7 @@ namespace MovieMVC.Areas.Admin.Controllers
             return View(Appointments);
         }
 
+        [Authorize(Roles = SD.Role_Admin)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeletePost(int id)

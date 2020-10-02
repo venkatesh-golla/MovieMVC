@@ -75,7 +75,7 @@
     <div>
         <table class="table table-striped border">
             <tr class="table-info">
-                @*<th>@Html.DisplayNameFor(a => a.Appointments.FirstOrDefault().SalesPerson)</th>*@
+                <th>@Html.DisplayNameFor(a => a.Appointments.FirstOrDefault().Employee)</th>
                 <th>@Html.DisplayNameFor(a => a.Appointments.FirstOrDefault().AppointmentDate)</th>
                 <th>@Html.DisplayNameFor(a => a.Appointments.FirstOrDefault().CustomerName)</th>
                 <th>@Html.DisplayNameFor(a => a.Appointments.FirstOrDefault().CustomerPhoneNumber)</th>
@@ -88,9 +88,9 @@
             @foreach (var item in Model.Appointments)
             {
                 <tr>
-                    @*<td>
-                        @Html.DisplayFor(m => item.SalesPerson.Name)
-                    </td>*@
+                    <td>
+                        @Html.DisplayFor(m => item.Employee.UserName)
+                    </td>
                     <td>
                         @Html.DisplayFor(m => item.AppointmentDate)
                     </td>

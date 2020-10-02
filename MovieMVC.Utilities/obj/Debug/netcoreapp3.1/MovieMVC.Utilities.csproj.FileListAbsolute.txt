@@ -6,3 +6,4 @@ C:\Users\golla\source\repos\MovieMVC\MovieMVC.Utilities\obj\Debug\netcoreapp3.1\
 C:\Users\golla\source\repos\MovieMVC\MovieMVC.Utilities\obj\Debug\netcoreapp3.1\MovieMVC.Utilities.dll
 C:\Users\golla\source\repos\MovieMVC\MovieMVC.Utilities\obj\Debug\netcoreapp3.1\MovieMVC.Utilities.pdb
 C:\Users\golla\source\repos\MovieMVC\MovieMVC.Utilities\obj\Debug\netcoreapp3.1\MovieMVC.Utilities.csproj.CoreCompileInputs.cache
+C:\Users\golla\source\repos\MovieMVC\MovieMVC.Utilities\obj\Debug\netcoreapp3.1\MovieMVC.Utilities.csprojAssemblyReference.cache
