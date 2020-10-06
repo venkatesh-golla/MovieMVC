@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "eTUgnhqo0mBuR/v9iOVsqAWAhnnhqylxo7k3NbtLwNResO8Nt11CaqlJEMbi2iGbSzSg5DBI12KK8rXLGQqHmQ==",
+  "dgSpecHash": "406Qhv0hXCnQFJMXIXg310wGP8wk8p/qlBL4LeAQJ+NUltmcdtc2gdV03V0GkPILKY8wRNeFfebGpTOHr16lvw==",
   "success": true,
   "projectFilePath": "C:\\Users\\golla\\source\\repos\\MovieMVC\\MovieMVC\\MovieMVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\golla\\.nuget\\packages\\dapper\\2.0.35\\dapper.2.0.35.nupkg.sha512",
     "C:\\Users\\golla\\.nuget\\packages\\entityframework\\6.1.0\\entityframework.6.1.0.nupkg.sha512",
+    "C:\\Users\\golla\\.nuget\\packages\\mailjet.api\\1.2.2\\mailjet.api.1.2.2.nupkg.sha512",
     "C:\\Users\\golla\\.nuget\\packages\\microsoft.aspnet.identity.core\\2.2.3\\microsoft.aspnet.identity.core.2.2.3.nupkg.sha512",
     "C:\\Users\\golla\\.nuget\\packages\\microsoft.aspnet.identity.entityframework\\2.2.3\\microsoft.aspnet.identity.entityframework.2.2.3.nupkg.sha512",
     "C:\\Users\\golla\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
@@ -129,7 +130,7 @@
     "C:\\Users\\golla\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\golla\\.nuget\\packages\\sendgrid\\9.21.0\\sendgrid.9.21.0.nupkg.sha512",
     "C:\\Users\\golla\\.nuget\\packages\\starkbank-ecdsa\\1.2.0\\starkbank-ecdsa.1.2.0.nupkg.sha512",
-    "C:\\Users\\golla\\.nuget\\packages\\stripe.net\\39.4.0\\stripe.net.39.4.0.nupkg.sha512",
+    "C:\\Users\\golla\\.nuget\\packages\\stripe.net\\39.10.0\\stripe.net.39.10.0.nupkg.sha512",
     "C:\\Users\\golla\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\golla\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\golla\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
@@ -219,7 +220,7 @@
     "C:\\Users\\golla\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\golla\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\golla\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\golla\\.nuget\\packages\\twilio\\5.47.0\\twilio.5.47.0.nupkg.sha512"
+    "C:\\Users\\golla\\.nuget\\packages\\twilio\\5.47.2\\twilio.5.47.2.nupkg.sha512"
   ],
   "logs": [
     {

@@ -314,6 +314,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Mailjet.Api": {
+              "target": "Package",
+              "version": "[1.2.2, )"
+            },
             "Microsoft.AspNetCore.Authentication.Facebook": {
               "target": "Package",
               "version": "[3.1.8, )"
@@ -354,11 +358,11 @@
             },
             "Stripe.net": {
               "target": "Package",
-              "version": "[39.4.0, )"
+              "version": "[39.10.0, )"
             },
             "Twilio": {
               "target": "Package",
-              "version": "[5.47.0, )"
+              "version": "[5.47.2, )"
             }
           },
           "imports": [

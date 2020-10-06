@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v3.1": {
       "MovieMVC/1.0.0": {
         "dependencies": {
+          "Mailjet.Api": "1.2.2",
           "Microsoft.AspNetCore.Authentication.Facebook": "3.1.8",
           "Microsoft.AspNetCore.Authentication.Google": "3.1.8",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "3.1.8",
@@ -36,8 +37,8 @@
           "MovieMVC.Data_Access": "1.0.0",
           "MovieMVC.Model": "1.0.0",
           "MovieMVC.Utilities": "1.0.0",
-          "Stripe.net": "39.4.0",
-          "Twilio": "5.47.0",
+          "Stripe.net": "39.10.0",
+          "Twilio": "5.47.2",
           "Microsoft.AspNetCore.Antiforgery.Reference": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions.Reference": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -336,6 +337,21 @@
         "compile": {
           "lib/net45/EntityFramework.SqlServer.dll": {},
           "lib/net45/EntityFramework.dll": {}
+        }
+      },
+      "Mailjet.Api/1.2.2": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "12.0.2"
+        },
+        "runtime": {
+          "lib/netstandard1.1/Mailjet.Client.dll": {
+            "assemblyVersion": "1.2.2.0",
+            "fileVersion": "1.2.2.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard1.1/Mailjet.Client.dll": {}
         }
       },
       "Microsoft.AspNet.Identity.Core/2.2.3": {
@@ -1783,7 +1799,7 @@
           "lib/netstandard2.1/StarkbankEcdsa.dll": {}
         }
       },
-      "Stripe.net/39.4.0": {
+      "Stripe.net/39.10.0": {
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "1.1.1",
           "Newtonsoft.Json": "12.0.2",
@@ -1791,8 +1807,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Stripe.net.dll": {
-            "assemblyVersion": "39.4.0.0",
-            "fileVersion": "39.4.0.0"
+            "assemblyVersion": "39.10.0.0",
+            "fileVersion": "39.10.0.0"
           }
         },
         "compile": {
@@ -2755,7 +2771,7 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
-      "Twilio/5.47.0": {
+      "Twilio/5.47.2": {
         "dependencies": {
           "Microsoft.IdentityModel.Tokens": "5.5.0",
           "Newtonsoft.Json": "12.0.2",
@@ -2764,8 +2780,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Twilio.dll": {
-            "assemblyVersion": "5.47.0.0",
-            "fileVersion": "5.47.0.0"
+            "assemblyVersion": "5.47.2.0",
+            "fileVersion": "5.47.2.0"
           }
         },
         "compile": {
@@ -4419,6 +4435,13 @@
       "path": "entityframework/6.1.0",
       "hashPath": "entityframework.6.1.0.nupkg.sha512"
     },
+    "Mailjet.Api/1.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zk52jjgFqdLmKFo1NAkMd0tSxdPK0MI4CTgwgzl7bAyCLnyYeurYcGLrjtISTAp4aM73hs7XuLTfDzDYYpO1Mw==",
+      "path": "mailjet.api/1.2.2",
+      "hashPath": "mailjet.api.1.2.2.nupkg.sha512"
+    },
     "Microsoft.AspNet.Identity.Core/2.2.3": {
       "type": "package",
       "serviceable": true,
@@ -5280,12 +5303,12 @@
       "path": "starkbank-ecdsa/1.2.0",
       "hashPath": "starkbank-ecdsa.1.2.0.nupkg.sha512"
     },
-    "Stripe.net/39.4.0": {
+    "Stripe.net/39.10.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-J65V0rDbgBAoEqJtoojvPiw3CMFShcKb43A3sAxCgh74LungHFc2bR+pJaQOw5trvj9MlTkr+WxwCA0qRLlyRQ==",
-      "path": "stripe.net/39.4.0",
-      "hashPath": "stripe.net.39.4.0.nupkg.sha512"
+      "sha512": "sha512-pRNd4gTHDWcMiKmRl5xDdCBpAUUqur+/YVg3jiA/8M26Z+P3ER/EXT1GEKICT39BI4Oy5tnnFI8jtpX0Kx0L5A==",
+      "path": "stripe.net/39.10.0",
+      "hashPath": "stripe.net.39.10.0.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",
@@ -5910,12 +5933,12 @@
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
-    "Twilio/5.47.0": {
+    "Twilio/5.47.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ExHcexMY5H+Qtdk6MnXfPapTNOpmW5FDmQHMImMTo+GUfjfKabBDbB/bkODJOXTbBFKbKeYHLHefm2aeJnArVA==",
-      "path": "twilio/5.47.0",
-      "hashPath": "twilio.5.47.0.nupkg.sha512"
+      "sha512": "sha512-ZxD6uTQn4nxN/6yo5z5GeXxph1Xf/NXktiFjPi1+4ho9bzpcziB19yKrzILxlMsWNa2HMwKYq2+oveezuotLCw==",
+      "path": "twilio/5.47.2",
+      "hashPath": "twilio.5.47.2.nupkg.sha512"
     },
     "MovieMVC.Data_Access/1.0.0": {
       "type": "project",

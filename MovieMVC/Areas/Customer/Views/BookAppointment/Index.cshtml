@@ -4,64 +4,71 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <div class="row">
+<div class="row">
 
 
-        <div class="col-3">
-
-        </div>
-
-        <div class="col-6">
-            <form method="post">
-                <br /><br />
-                <h2 class="text-info">Appointment</h2>
-                <br />
-                <div class="row">
-                    <div class="col-12">
-                        <label>Name : </label>
-                    </div>
-                    <div class="col-12" style="padding-bottom:15px">
-                        <input asp-for="@Model.CustomerName" class="form-control" />
-                    </div>
-                    <div class="col-12">
-                        <label>Phone Number : </label>
-                    </div>
-                    <div class="col-12" style="padding-bottom:15px">
-                        <input asp-for="@Model.CustomerPhoneNumber" class="form-control" />
-                    </div>
-                    <div class="col-12">
-                        <label>Email  : </label>
-                    </div>
-                    <div class="col-12" style="padding-bottom:15px">
-                        <input asp-for="@Model.CustomerEMail" class="form-control" />
-                    </div>
-                    <div class="col-12">
-                        <label>Appointment Date : </label>
-                    </div>
-                    <div class="col-12" style="padding-bottom:15px">
-                        <input asp-for="@Model.AppointmentDate" value="" type="text" id="datepicker" class="form-control" autocomplete="off"/>
-                    </div>
-                    <div class="col-12">
-                        <label>Appointment Time : </label>
-                    </div>
-                    <div class="col-12" style="padding-bottom:15px">
-                        <input asp-for="@Model.AppointmentTime" value="" type="text" class="timepicker form-control" autocomplete="off"/>
-                    </div>
-                    <div class="col-12">
-                        <button type="submit" id="btnPlaceOrder" class="btn btn-success">Schedule Appointment</button>
-                    </div>
-                </div>
-            </form>
-
-        </div>
-
-        <div class="col-3">
-
-        </div>
+    <div class="col-3">
 
     </div>
 
+    <div class="col-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <br /><br />
+            <h2 class="text-info">Appointment</h2>
+            <br />
+            <div class="row">
+                <div class="col-12">
+                    <label asp-for="@Model.CustomerName"></label>
+                </div>
+                <div class="col-12" style="padding-bottom:15px">
+                    <input asp-for="@Model.CustomerName" class="form-control" />
+                    <span asp-validation-for="@Model.CustomerName" class="text-danger"></span>
+                </div>
+                <div class="col-12">
+                    <label asp-for="@Model.CustomerPhoneNumber">Phone Number : </label>
+                </div>
+                <div class="col-12" style="padding-bottom:15px">
+                    <input asp-for="@Model.CustomerPhoneNumber" class="form-control" />
+                    <span asp-validation-for="@Model.CustomerPhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="col-12">
+                    <label asp-for="@Model.CustomerEMail">Email  : </label>
+                </div>
+                <div class="col-12" style="padding-bottom:15px">
+                    <input asp-for="@Model.CustomerEMail" class="form-control" />
+                    <span asp-validation-for="@Model.CustomerEMail" class="text-danger"></span>
+                </div>
+                <div class="col-12">
+                    <label asp-for="@Model.AppointmentDate">Appointment Date : </label>
+                </div>
+                <div class="col-12" style="padding-bottom:15px">
+                    <input asp-for="@Model.AppointmentDate" value="" type="text" id="datepicker" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="@Model.AppointmentDate" class="text-danger"></span>
+                </div>
+                <div class="col-12">
+                    <label asp-for="@Model.AppointmentTime">Appointment Time : </label>
+                </div>
+                <div class="col-12" style="padding-bottom:15px">
+                    <input asp-for="@Model.AppointmentTime" value="" type="text" class="timepicker form-control" autocomplete="off" />
+                    <span asp-validation-for="@Model.AppointmentTime" class="text-danger"></span>
+                </div>
+                <div class="col-12">
+                    <button type="submit" id="btnPlaceOrder" class="btn btn-success">Schedule Appointment</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="col-3">
+
+    </div>
+
+</div>
+
 @section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script>
         $('.timepicker').timepicker({
             timeFormat: 'h:mm p',
@@ -75,7 +82,7 @@
         })
         $(function () {
             $("#datepicker").datepicker({
-                minDate: +1, maxDate: "+3M"
+                minDate: +1, maxDate: "+1M"
             });
         })
     </script>

@@ -7,6 +7,7 @@ using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +30,8 @@ namespace MovieMVC.Areas.Identity.Pages.Account
         private readonly IEmailSender _emailSender;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IWebHostEnvironment _hostEnvironment;
+
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
@@ -36,10 +39,11 @@ namespace MovieMVC.Areas.Identity.Pages.Account
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
             RoleManager<IdentityRole> roleManager,
-            IUnitOfWork unitOfWork
-            )
+            IUnitOfWork unitOfWork,
+            IWebHostEnvironment hostEnvironment)
         {
             _userManager = userManager;
+            _hostEnvironment = hostEnvironment;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
@@ -79,7 +83,7 @@ namespace MovieMVC.Areas.Identity.Pages.Account
 
             public string State { get; set; }
             public string PostalCode { get; set; }
-            public  string PhoneNumber { get; set; }
+            public string PhoneNumber { get; set; }
             public string Role { get; set; }
 
             public int? CompanyId { get; set; }
@@ -123,39 +127,39 @@ namespace MovieMVC.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser
-                { 
+                {
                     UserName = Input.Email,
                     Email = Input.Email,
-                    CompanyId=Input.CompanyId,
-                    StreetAddress=Input.StreetAddress,
-                    City=Input.City,
-                    State=Input.State,
-                    PostalCode=Input.PostalCode,
-                    Name=Input.Name,
-                    PhoneNumber=Input.PhoneNumber,
-                    Role=Input.Role
+                    CompanyId = Input.CompanyId,
+                    StreetAddress = Input.StreetAddress,
+                    City = Input.City,
+                    State = Input.State,
+                    PostalCode = Input.PostalCode,
+                    Name = Input.Name,
+                    PhoneNumber = Input.PhoneNumber,
+                    Role = Input.Role
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-/*                    if (!await _roleManager.RoleExistsAsync(SD.Role_Admin))
-                    {
-                        await _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin));
-                    }
-                    if (!await _roleManager.RoleExistsAsync(SD.Role_Employee))
-                    {
-                        await _roleManager.CreateAsync(new IdentityRole(SD.Role_Employee));
-                    }
-                    if (!await _roleManager.RoleExistsAsync(SD.Role_User_Comp))
-                    {
-                        await _roleManager.CreateAsync(new IdentityRole(SD.Role_User_Comp));
-                    }
-                    if (!await _roleManager.RoleExistsAsync(SD.Role_User_Indi))
-                    {
-                        await _roleManager.CreateAsync(new IdentityRole(SD.Role_User_Indi));
-                    }*/
+                    /*                    if (!await _roleManager.RoleExistsAsync(SD.Role_Admin))
+                                        {
+                                            await _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin));
+                                        }
+                                        if (!await _roleManager.RoleExistsAsync(SD.Role_Employee))
+                                        {
+                                            await _roleManager.CreateAsync(new IdentityRole(SD.Role_Employee));
+                                        }
+                                        if (!await _roleManager.RoleExistsAsync(SD.Role_User_Comp))
+                                        {
+                                            await _roleManager.CreateAsync(new IdentityRole(SD.Role_User_Comp));
+                                        }
+                                        if (!await _roleManager.RoleExistsAsync(SD.Role_User_Indi))
+                                        {
+                                            await _roleManager.CreateAsync(new IdentityRole(SD.Role_User_Indi));
+                                        }*/
 
                     if (user.Role == null)
                     {
@@ -175,7 +179,7 @@ namespace MovieMVC.Areas.Identity.Pages.Account
                     var callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
                         pageHandler: null,
-                        values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
+                        values: new { area = "Identity", userId = user.Id, code },
                         protocol: Request.Scheme);
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
@@ -194,7 +198,7 @@ namespace MovieMVC.Areas.Identity.Pages.Account
                         }
                         else
                         {
-                            return RedirectToAction("Index", "User",new { Area="Admin"});
+                            return RedirectToAction("Index", "User", new { Area = "Admin" });
                         }
                     }
                 }

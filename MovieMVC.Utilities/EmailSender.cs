@@ -24,7 +24,7 @@ namespace MovieMVC.Utilities
          private Task Execute(string sendGridKey,string subject, string message,string email)
         {
             var client = new SendGridClient(sendGridKey);
-            var from = new EmailAddress("admin@moviemvc.com", "MovieMVC");
+            var from = new EmailAddress("golla.venkatesh1997@gmail.com", "MovieMVC");
             var to = new EmailAddress(email, "End User");
             var msg = MailHelper.CreateSingleEmail(from, to, subject, message, "");
             return  client.SendEmailAsync(msg);

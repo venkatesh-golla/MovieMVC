@@ -25,6 +25,19 @@
           "lib/net45/EntityFramework.dll": {}
         }
       },
+      "Mailjet.Api/1.2.2": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "9.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.1/Mailjet.Client.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.1/Mailjet.Client.dll": {}
+        }
+      },
       "Microsoft.AspNet.Identity.Core/2.2.3": {
         "type": "package",
         "compile": {
@@ -1795,7 +1808,7 @@
           "lib/netstandard2.1/StarkbankEcdsa.dll": {}
         }
       },
-      "Stripe.net/39.4.0": {
+      "Stripe.net/39.10.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "1.1.0",
@@ -3327,7 +3340,7 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Twilio/5.47.0": {
+      "Twilio/5.47.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.IdentityModel.Tokens": "5.3.0",
@@ -3456,6 +3469,19 @@
         "tools/init.ps1",
         "tools/install.ps1",
         "tools/migrate.exe"
+      ]
+    },
+    "Mailjet.Api/1.2.2": {
+      "sha512": "zk52jjgFqdLmKFo1NAkMd0tSxdPK0MI4CTgwgzl7bAyCLnyYeurYcGLrjtISTAp4aM73hs7XuLTfDzDYYpO1Mw==",
+      "type": "package",
+      "path": "mailjet.api/1.2.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Mailjet.Client.dll",
+        "lib/netstandard1.1/Mailjet.Client.dll",
+        "mailjet.api.1.2.2.nupkg.sha512",
+        "mailjet.api.nuspec"
       ]
     },
     "Microsoft.AspNet.Identity.Core/2.2.3": {
@@ -5972,10 +5998,10 @@
         "starkbank-ecdsa.nuspec"
       ]
     },
-    "Stripe.net/39.4.0": {
-      "sha512": "J65V0rDbgBAoEqJtoojvPiw3CMFShcKb43A3sAxCgh74LungHFc2bR+pJaQOw5trvj9MlTkr+WxwCA0qRLlyRQ==",
+    "Stripe.net/39.10.0": {
+      "sha512": "pRNd4gTHDWcMiKmRl5xDdCBpAUUqur+/YVg3jiA/8M26Z+P3ER/EXT1GEKICT39BI4Oy5tnnFI8jtpX0Kx0L5A==",
       "type": "package",
-      "path": "stripe.net/39.4.0",
+      "path": "stripe.net/39.10.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5987,7 +6013,7 @@
         "lib/netstandard2.0/Stripe.net.dll",
         "lib/netstandard2.0/Stripe.net.pdb",
         "lib/netstandard2.0/Stripe.net.xml",
-        "stripe.net.39.4.0.nupkg.sha512",
+        "stripe.net.39.10.0.nupkg.sha512",
         "stripe.net.nuspec"
       ]
     },
@@ -10262,10 +10288,10 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "Twilio/5.47.0": {
-      "sha512": "ExHcexMY5H+Qtdk6MnXfPapTNOpmW5FDmQHMImMTo+GUfjfKabBDbB/bkODJOXTbBFKbKeYHLHefm2aeJnArVA==",
+    "Twilio/5.47.2": {
+      "sha512": "ZxD6uTQn4nxN/6yo5z5GeXxph1Xf/NXktiFjPi1+4ho9bzpcziB19yKrzILxlMsWNa2HMwKYq2+oveezuotLCw==",
       "type": "package",
-      "path": "twilio/5.47.0",
+      "path": "twilio/5.47.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -10277,7 +10303,7 @@
         "lib/netstandard1.4/Twilio.xml",
         "lib/netstandard2.0/Twilio.dll",
         "lib/netstandard2.0/Twilio.xml",
-        "twilio.5.47.0.nupkg.sha512",
+        "twilio.5.47.2.nupkg.sha512",
         "twilio.nuspec"
       ]
     },
@@ -10299,6 +10325,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Mailjet.Api >= 1.2.2",
       "Microsoft.AspNetCore.Authentication.Facebook >= 3.1.8",
       "Microsoft.AspNetCore.Authentication.Google >= 3.1.8",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 3.1.8",
@@ -10311,8 +10338,8 @@
       "MovieMVC.Data_Access >= 1.0.0",
       "MovieMVC.Model >= 1.0.0",
       "MovieMVC.Utilities >= 1.0.0",
-      "Stripe.net >= 39.4.0",
-      "Twilio >= 5.47.0"
+      "Stripe.net >= 39.10.0",
+      "Twilio >= 5.47.2"
     ]
   },
   "packageFolders": {
@@ -10363,6 +10390,10 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
+          "Mailjet.Api": {
+            "target": "Package",
+            "version": "[1.2.2, )"
+          },
           "Microsoft.AspNetCore.Authentication.Facebook": {
             "target": "Package",
             "version": "[3.1.8, )"
@@ -10403,11 +10434,11 @@
           },
           "Stripe.net": {
             "target": "Package",
-            "version": "[39.4.0, )"
+            "version": "[39.10.0, )"
           },
           "Twilio": {
             "target": "Package",
-            "version": "[5.47.0, )"
+            "version": "[5.47.2, )"
           }
         },
         "imports": [

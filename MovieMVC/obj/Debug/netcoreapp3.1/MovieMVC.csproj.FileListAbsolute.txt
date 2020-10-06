@@ -503,9 +503,6 @@ C:\Users\golla\source\repos\MovieMVC\MovieMVC\bin\Debug\netcoreapp3.1\Microsoft.
 C:\Users\golla\source\repos\MovieMVC\MovieMVC\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 C:\Users\golla\source\repos\MovieMVC\MovieMVC\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\golla\source\repos\MovieMVC\MovieMVC\bin\Debug\netcoreapp3.1\Twilio.dll
-C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\MovieMVC.csproj.CoreCompileInputs.cache
-C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\MovieMVC.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\MovieMVC.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\UserName\Default.cshtml.g.cs
 C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_notifications.cshtml.g.cs
 C:\Users\golla\source\repos\MovieMVC\MovieMVC\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
@@ -521,3 +518,7 @@ C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\Razor\View
 C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Appointment\Edit.cshtml.g.cs
 C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Appointment\Details.cshtml.g.cs
 C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Appointment\Delete.cshtml.g.cs
+C:\Users\golla\source\repos\MovieMVC\MovieMVC\bin\Debug\netcoreapp3.1\Mailjet.Client.dll
+C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\MovieMVC.csproj.CoreCompileInputs.cache
+C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\MovieMVC.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\golla\source\repos\MovieMVC\MovieMVC\obj\Debug\netcoreapp3.1\MovieMVC.MvcApplicationPartsAssemblyInfo.cache

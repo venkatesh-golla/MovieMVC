@@ -108,7 +108,7 @@ namespace MovieMVC.Areas.Admin.Controllers
                 TotalItems = count,
                 urlParameter = param.ToString()
             };
-            if (AppointmentVM.Appointments.Count>0 && AppointmentVM.Appointments.FirstOrDefault().EmployeeId.Length>0)
+            if (AppointmentVM.Appointments.Count>0 && String.IsNullOrEmpty(AppointmentVM.Appointments.FirstOrDefault().EmployeeId))
             {
                 foreach (var employee in AppointmentVM.Appointments)
                 {

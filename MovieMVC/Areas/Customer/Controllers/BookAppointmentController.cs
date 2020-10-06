@@ -24,6 +24,11 @@ namespace MovieMVC.Areas.Customer.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> IndexPost(Appointment appointment)
         {
+            if (!ModelState.IsValid)
+            {
+                TempData["message"] = "Data is not valid";
+                return View(appointment);
+            }
             try
             {
                 appointment.AppointmentDate = appointment.AppointmentDate

@@ -108,16 +108,31 @@ namespace MovieMVC.Areas.Admin.Controllers
             OrderHeader orderHeader = _unitOfWork.OrderHeader.GetFirstOrDefault(u => u.Id == id);
             if (orderHeader.PaymentStatus == SD.StatusApproved)
             {
-                var options = new RefundCreateOptions
+                if (orderHeader.OrderStatus == SD.StatusShipped)
                 {
-                    Amount = Convert.ToInt32(orderHeader.OrderTotal * 100),
-                    Reason = RefundReasons.RequestedByCustomer,
-                    Charge = orderHeader.TransactionId
-                };
-                var service = new RefundService();
-                Refund refund = service.Create(options);
-                orderHeader.OrderStatus = SD.StatusRefunded;
-                orderHeader.PaymentStatus = SD.StatusRefunded;
+                    TempData["message"] = "Your order has alreay been shipped. Unable to cancel the order now. Please contact customer support and provide your order number";
+                }
+                else
+                {
+                    var options = new RefundCreateOptions
+                    {
+                        Amount = Convert.ToInt32(orderHeader.OrderTotal * 100),
+                        Reason = RefundReasons.RequestedByCustomer,
+                        Charge = orderHeader.TransactionId
+                    };
+                    var service = new RefundService();
+                    try
+                    {
+                        Refund refund = service.Create(options);
+                        orderHeader.OrderStatus = SD.StatusRefunded;
+                        orderHeader.PaymentStatus = SD.StatusRefunded;
+                    }
+                    catch (Exception e)
+                    {
+                        TempData["message"] = e.Message;
+                    }
+                }
+
             }
             else
             {
