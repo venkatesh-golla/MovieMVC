@@ -7,12 +7,23 @@ a.navbar-brand {
     word-break: break-all;
 }
 
-/* Provide sufficient contrast against white background */
-a {
-    color: #0366d6;
-}
+@media only screen and (max-width: 480px) {
+    .emailButton {
+        max-width: 600px !important;
+        width: 100% !important;
+    }
 
-/* remove bhrugen
+        .emailButton a {
+            display: block !important;
+            font-size: 18px !important;
+        }
+}
+    /* Provide sufficient contrast against white background */
+    a {
+        color: #0366d6;
+    }
+
+    /* remove bhrugen
     .btn-primary {
   color: #fff;
   background-color: #2c3e50;
@@ -23,8 +34,8 @@ a {
   color: #fff;
   
   /*background-color: #1b6ec2;*/
-background-color: #2c3e50;
-border-color: #1861ac;
+    background-color: #2c3e50;
+    border-color: #1861ac;
 }
 
 */

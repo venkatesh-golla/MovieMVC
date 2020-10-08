@@ -8,59 +8,59 @@
     <br /><br />
     <h2 class="text-white-50">Appoinments List</h2>
     <br />
-    <div style="height:150px;" class="container text-white-50">
+    <div class="container text-white-50">
         <div class="col-12">
             <div class="row" style="padding-top:10px;">
-                <div class="col-2">
+                <div class="col-sm-2">
                     Customer Name
                 </div>
-                <div class="col-3">
+                <div class="col-sm-3">
                     @Html.Editor("searchName", new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
                 </div>
-                <div class="col-2">
+                <div class="col-sm-2">
 
                 </div>
-                <div class="col-2">
+                <div class="col-sm-2">
                    Email                    
                 </div>
-                <div class="col-3">
+                <div class="col-sm-3">
                     @Html.Editor("searchEmail", new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
                 </div>
             </div>
 
             <div class="row" style="padding-top:10px;">
-                <div class="col-2">
+                <div class="col-sm-2">
                     Phone Number                    
                 </div>
-                <div class="col-3">
+                <div class="col-sm-3">
                     @Html.Editor("searchPhone", new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
                 </div>
 
-                <div class="col-2">
+                <div class="col-sm-2">
 
                 </div>
 
-                <div class="col-2">
+                <div class="col-sm-2">
                     Appointment Date                    
                 </div>
-                <div class="col-3">
+                <div class="col-sm-3">
                     @Html.Editor("searchDate", new { htmlAttributes = new { @class = "form-control", @id = "datePicker", autocomplete = "off" } })
                 </div>
             </div>
 
             <div class="row" style="padding-top:10px;">
-                <div class="col-2">
+                <div class="col=sm-2">
                 </div>
-                <div class="col-3">
-                </div>
-
-                <div class="col-2">
-
+                <div class="col-sm-3">
                 </div>
 
-                <div class="col-2">
+                <div class="col-sm-2">
+
                 </div>
-                <div class="col-3">
+
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-3">
                     <button type="submit" name="submit" value="Search" class="btn btn-primary form-control">
                         <i class="fas fa-search"></i>Search
                     </button>
@@ -72,7 +72,7 @@
     </div>
     <br /><br />
 
-    <div>
+    <div style="overflow-x:auto;">
         <table class="table table-striped border text-white-50">
             <tr class="table-info">
                 <th>@Html.DisplayNameFor(a => a.Appointments.FirstOrDefault().Employee)</th>
