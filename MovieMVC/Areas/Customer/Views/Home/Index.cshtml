@@ -4,7 +4,7 @@
 @{
     ViewData["Title"] = "Movies List";
 }
-    <div class="row">
+    <div class="row" style="background-color:#00203FFF;">
         <div class="col-2">
             <a class="btn btn-outline-success" asp-action="DirectorsList">Directors</a>
         </div>
@@ -21,7 +21,7 @@
 
         </div>
         <div class="col-2">
-            <a class="btn btn-danger" asp-controller="BookAppointment" asp-action="Index">Book Appointment</a>
+            <a class="btn btn-outline-danger" asp-controller="BookAppointment" asp-action="Index">Book Appointment</a>
         </div>
     </div>
 
@@ -32,22 +32,25 @@
 
     @foreach (var movie in Model)
     {
-        <div class="col-lg-3 col-md-6">
+        <div class="col-lg-3 col-md-6 text-white">
             <div class="row p-2">
-                <div class="col-12  p-1" style="border:1px solid #008cba; border-radius: 5px;">
+                <div class="col-12  p-1" style=" border: 1px solid WHITE; border-radius: 5px;">
                     <div class="card" style="border:0px;">
                         <img src="@movie.ImageUrl" style="height:200px" class="card-img-top rounded" />
-                        <div class="pl-1">
-                            <p class="card-title h5"><b style="color:#2c3e50">@movie.Title</b></p>
-                            <a asp-action="moviesByDirector" asp-route-directorName="@movie.Director"><p class="card-title text-primary">by <b>@movie.Director</b></p></a>
-                            <a asp-action="moviesByCategory" asp-route-categoryId="@movie.CategoryId"><p class="card-title text-primary">Category: <b>@movie.Category.Name</b></p></a>
+                        <div style="background-color:#00203FFF;">
+                            <div class="pl-1">
+                                <p class="card-title h5 text-primary"><b>@movie.Title</b></p>
+                                <a asp-action="moviesByDirector" asp-route-directorName="@movie.Director"><p class="card-title text-primary">by <b>@movie.Director</b></p></a>
+                                <a asp-action="moviesByCategory" asp-route-categoryId="@movie.CategoryId"><p class="card-title text-primary">Category: <b>@movie.Category.Name</b></p></a>
+                            </div>
+                            <div style="padding-left:5px;">
+                                <p>List Price: <strike><b class="">@movie.ListPrice.ToString("0.00")</b></strike></p>
+                            </div>
+                            <div style="padding-left:5px;">
+                                <p style="color:maroon">As low as: <b class="">@movie.Price100.ToString("0.00")</b></p>
+                            </div>
                         </div>
-                        <div style="padding-left:5px;">
-                            <p>List Price: <strike><b class="">@movie.ListPrice.ToString("0.00")</b></strike></p>
-                        </div>
-                        <div style="padding-left:5px;">
-                            <p style="color:maroon">As low as: <b class="">@movie.Price100.ToString("0.00")</b></p>
-                        </div>
+
                     </div>
                     <div>
                         <a asp-action="Details" class="btn btn-primary form-control" asp-route-id="@movie.Id">Details</a>

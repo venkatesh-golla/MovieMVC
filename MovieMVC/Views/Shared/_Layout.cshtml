@@ -15,9 +15,24 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
-
+    <style>
+        .buttonOne {
+            color: white;
+            border: 0.1em solid #FFFFFF;
+            margin: 0 0.3em 0.3em 0;
+            border-radius: 0.12em;
+            text-decoration: none;
+            font-weight: 300;
+            padding: 0.35em 1.2em;
+        }
+        .buttonOne:hover {
+            color:#000000;
+            background-color:#FFFFFF;
+        }
+}
+    </style>
 </head>
-<body>
+<body  style="background-color:#00203FFF;">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
             <div class="container">
@@ -102,7 +117,7 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-            @if (@TempData.ContainsKey("Success") && TempData["Success"] != null)
+            @*@if (@TempData.ContainsKey("Success") && TempData["Success"] != null)
             {
                 <div class="alert alert-success alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="close">
@@ -127,7 +142,7 @@
                     </button>
                     @TempData["Message"]
                 </div>
-            }
+            }*@
             <partial name="_notifications" />
             @RenderBody()
         </main>

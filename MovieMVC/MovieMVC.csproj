@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\css\StyleSheet.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Mailjet.Api" Version="1.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="3.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="3.1.8" />

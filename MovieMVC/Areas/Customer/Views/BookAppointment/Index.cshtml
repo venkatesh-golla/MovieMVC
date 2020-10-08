@@ -1,11 +1,21 @@
 ﻿@model MovieMVC.Model.Appointment
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Book Appointment";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<br />
 <div class="row">
+    <div class="col-4">
 
+    </div>
+    <div class="col-6">
+        <h3 class="text-white-50">@ViewData["Title"]</h3>
+    </div>
+    <div class="col-2">
+        <a asp-action="Index" asp-controller="Home" class="buttonOne">Back</a>
+    </div>
+</div>
+<div class="row">
 
     <div class="col-3">
 
@@ -14,45 +24,45 @@
     <div class="col-6">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <br /><br />
-            <h2 class="text-info">Appointment</h2>
-            <br />
+                        <br />
             <div class="row">
                 <div class="col-12">
-                    <label asp-for="@Model.CustomerName"></label>
+                    <label asp-for="@Model.CustomerName" class="text-white-50"></label>
                 </div>
                 <div class="col-12" style="padding-bottom:15px">
                     <input asp-for="@Model.CustomerName" class="form-control" />
                     <span asp-validation-for="@Model.CustomerName" class="text-danger"></span>
                 </div>
                 <div class="col-12">
-                    <label asp-for="@Model.CustomerPhoneNumber">Phone Number : </label>
+                    <label asp-for="@Model.CustomerPhoneNumber" class="text-white-50">Phone Number : </label>
                 </div>
                 <div class="col-12" style="padding-bottom:15px">
                     <input asp-for="@Model.CustomerPhoneNumber" class="form-control" />
                     <span asp-validation-for="@Model.CustomerPhoneNumber" class="text-danger"></span>
                 </div>
                 <div class="col-12">
-                    <label asp-for="@Model.CustomerEMail">Email  : </label>
+                    <label asp-for="@Model.CustomerEMail" class="text-white-50">Email  : </label>
                 </div>
                 <div class="col-12" style="padding-bottom:15px">
                     <input asp-for="@Model.CustomerEMail" class="form-control" />
                     <span asp-validation-for="@Model.CustomerEMail" class="text-danger"></span>
                 </div>
                 <div class="col-12">
-                    <label asp-for="@Model.AppointmentDate">Appointment Date : </label>
+                    <label asp-for="@Model.AppointmentDate" class="text-white-50">Appointment Date : </label>
                 </div>
                 <div class="col-12" style="padding-bottom:15px">
                     <input asp-for="@Model.AppointmentDate" value="" type="text" id="datepicker" class="form-control" autocomplete="off" />
                     <span asp-validation-for="@Model.AppointmentDate" class="text-danger"></span>
                 </div>
                 <div class="col-12">
-                    <label asp-for="@Model.AppointmentTime">Appointment Time : </label>
+                    <label asp-for="@Model.AppointmentTime" class="text-white-50">Appointment Time : </label>
                 </div>
                 <div class="col-12" style="padding-bottom:15px">
                     <input asp-for="@Model.AppointmentTime" value="" type="text" class="timepicker form-control" autocomplete="off" />
                     <span asp-validation-for="@Model.AppointmentTime" class="text-danger"></span>
+                    <br />
                 </div>
+
                 <div class="col-12">
                     <button type="submit" id="btnPlaceOrder" class="btn btn-success">Schedule Appointment</button>
                 </div>
@@ -66,6 +76,8 @@
     </div>
 
 </div>
+<br />
+<br />
 
 @section Scripts{
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

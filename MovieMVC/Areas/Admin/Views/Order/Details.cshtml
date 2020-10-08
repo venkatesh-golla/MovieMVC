@@ -6,14 +6,14 @@
 
 @{
 
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Order Summary";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <form method="post">
     <input asp-for="OrderHeader.Id" hidden />
     <br />
-    <div class="backgroundWhite container">
+    <div class="backgroundWhite container text-black-50">
         <div class="card">
             <div class="card-header bg-dark text-light ml-0 row container">
                 <div class="col-12 d-none d-md-block col-md-6 pb-1">

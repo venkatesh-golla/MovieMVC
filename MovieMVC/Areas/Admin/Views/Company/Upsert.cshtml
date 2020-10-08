@@ -4,11 +4,11 @@
 }
 
 <form method="post">
-    <div class="row p-3 border">
+    <div class="row p-3 border" style="background-color:aliceblue;">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         @if (Model.Id != 0)
         {
-            title = "Edit Category";
+            title = "Edit Company";
         }
         <div class="col-12 border-bottom">
             <h2 class="text-primary">@title</h2>
@@ -92,6 +92,10 @@
         </div>
     </div>
 </form>
+
+@{
+    ViewData["Title"] = title;
+}
 
 
 @section Scripts{

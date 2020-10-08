@@ -1,18 +1,38 @@
 ﻿@model IEnumerable<string>
-@{
-    ViewData["Title"] = "List of Directors";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
-<h1>List Of Directors</h1>
-<hr />
-<div class="row" >
-    @foreach (var director in Model)
-    {
-    <div class="d-flex justify-content-center align-items-center col-2 p-1 mr-3 mb-3 bg-primary" style="border:1px solid black; border-radius: 5px;">
-       <a asp-action="moviesByDirector" asp-route-directorName="@director"> <span class="align-middle text-white">@director</span></a>
+
+@if (Model.Count() > 0)
+{
+    ViewData["Title"] = "List of Directors";
+    <div class="row">
+        <div class="col-10">
+            <h3 class="text-white-50">@ViewData["Title"]</h3>
+        </div>
+        <div class="col-2">
+            <a asp-action="Index" class="buttonOne">Back</a>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        @foreach (var director in Model)
+        {
+            <div class="d-flex justify-content-center align-items-center col-2 p-1 mr-3 mb-3 bg-primary" style="border:1px solid black; border-radius: 5px;">
+                <a asp-action="moviesByDirector" asp-route-directorName="@director"> <span class="align-middle text-white">@director</span></a>
+            </div>
+
+        }
     </div>
 
-    }
-</div>
+}
+else
+{
+    <div class="row">
+        <div class="col-10">
+            <h3 class="text-white-50">No Directors in the List</h3>
+        </div>
+        <div class="col-2">
+            <a asp-action="Index" class="buttonOne">Back</a>
+        </div>
+    </div>
+}
 

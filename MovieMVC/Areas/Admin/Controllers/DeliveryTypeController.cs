@@ -35,8 +35,8 @@ namespace MovieMVC.Areas.Admin.Controllers
             }
             var parameter = new DynamicParameters();
             parameter.Add("@Id", id);
-            deliveryType = _unitOfWork.SP_Call.OneRecord<DeliveryType>(SD.Proc_DeliveryType_Get, parameter);
-            // deliveryType = _unitOfWork.DeliveryType.Get(id.GetValueOrDefault());
+            //deliveryType = _unitOfWork.SP_Call.OneRecord<DeliveryType>(SD.Proc_DeliveryType_Get, parameter);
+             deliveryType = _unitOfWork.DeliveryType.Get(id.GetValueOrDefault());
             if (deliveryType == null)
             {
                 return NotFound();
@@ -55,14 +55,14 @@ namespace MovieMVC.Areas.Admin.Controllers
                 parameter.Add("@Name", deliveryType.Name);
                 if (deliveryType.Id == 0)
                 {
-                    _unitOfWork.SP_Call.Execute(SD.Proc_DeliveryType_Create, parameter);
-                   // _unitOfWork.DeliveryType.Add(deliveryType);
+                    //_unitOfWork.SP_Call.Execute(SD.Proc_DeliveryType_Create, parameter);
+                    _unitOfWork.DeliveryType.Add(deliveryType);
                 }
                 else
                 {
                     parameter.Add("@Id", deliveryType.Id);
-                    _unitOfWork.SP_Call.Execute(SD.Proc_DeliveryType_Update, parameter);
-                  //  _unitOfWork.DeliveryType.Update(deliveryType);
+                   // _unitOfWork.SP_Call.Execute(SD.Proc_DeliveryType_Update, parameter);
+                    _unitOfWork.DeliveryType.Update(deliveryType);
                 }
                 _unitOfWork.Save();
                 return RedirectToAction(nameof(Index));
@@ -75,8 +75,8 @@ namespace MovieMVC.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            // var allObjs = _unitOfWork.DeliveryType.GetAll();
-            var allObjs = _unitOfWork.SP_Call.List<DeliveryType>(SD.Proc_DeliveryType_GetAll,null);
+             var allObjs = _unitOfWork.DeliveryType.GetAll();
+            //var allObjs = _unitOfWork.SP_Call.List<DeliveryType>(SD.Proc_DeliveryType_GetAll,null);
             return Json(new { data = allObjs });
         }
         [HttpDelete]
@@ -84,14 +84,14 @@ namespace MovieMVC.Areas.Admin.Controllers
         {
             var parameter = new DynamicParameters();
             parameter.Add("@Id", id);
-            var objFromDb = _unitOfWork.SP_Call.OneRecord<DeliveryType>(SD.Proc_DeliveryType_Get, parameter);
-            //var objFromDb = _unitOfWork.DeliveryType.Get(id);
+            //var objFromDb = _unitOfWork.SP_Call.OneRecord<DeliveryType>(SD.Proc_DeliveryType_Get, parameter);
+            var objFromDb = _unitOfWork.DeliveryType.Get(id);
             if (objFromDb == null)
             {
                 return Json(new { success = false, message = "Error while deleting" });
             }
-            _unitOfWork.SP_Call.Execute(SD.Proc_DeliveryType_Delete, parameter);
-           // _unitOfWork.DeliveryType.Remove(objFromDb);
+            //_unitOfWork.SP_Call.Execute(SD.Proc_DeliveryType_Delete, parameter);
+            _unitOfWork.DeliveryType.Remove(objFromDb);
             _unitOfWork.Save();
             return Json(new { success = true, message = "Deleted Succesfully" });
         }

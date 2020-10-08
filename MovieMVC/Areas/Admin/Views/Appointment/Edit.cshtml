@@ -3,17 +3,17 @@
 @using MovieMVC.Extensions;
 using Microsoft.AspNetCore.Authorization;
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Appointment";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <br />
+
+<h4 class="text-white-50">Edit Appointment</h4>
 <br />
 
-<h4 class="text-info">Edit Appointment</h4>
-
 <form asp-action="Edit" enctype="multipart/form-data" method="post">
-    <div class="p-lg-4 border rounded row">
+    <div class="p-lg-4 border rounded row text-white-50">
         <input hidden asp-for="@Model.Id" />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="col-6">
